@@ -1,0 +1,19 @@
+{
+  "name": "elastic-sink-books-v1",
+  "config": {
+      "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+      "tasks.max": "1",
+      "topics": "updated_edited",
+      "connection.url": "http://es01:9200",
+      "transforms": "unwrap,key",
+      "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+      "transforms.unwrap.drop.tombstones": "false",
+      "transforms.key.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
+      "transforms.key.field": "id",
+      "key.ignore": "false",
+      "type.name": "_doc",
+      "behavior.on.null.values": "delete",
+      "schema.ignore": "true",
+      "topic.index.map": "updated_edited:books-v1"
+  }
+}

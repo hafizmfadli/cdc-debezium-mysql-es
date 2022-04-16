@@ -1,0 +1,3 @@
+ALTER TABLE updated_edited
+ADD COLUMN Price INT NULL,
+ADD COLUMN Stock INT NULL;
